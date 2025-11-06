@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 function UpdateUserScreen() {
   return (
-    <MainCard title="Edit User Information">
+    <MainCard title="👤 Chỉnh Sửa Thông Tin">
       <UpdateUserForm />
     </MainCard>
   );
