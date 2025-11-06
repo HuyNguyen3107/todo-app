@@ -3,6 +3,7 @@ import Toast from "@/components/toast.components";
 import QueryProvider from "@/libs/query-provider.libs";
 import { Metadata } from "next";
 import React from "react";
+import { Box } from "@mui/material";
 
 type Props = {
   children: React.ReactNode;
@@ -15,13 +16,19 @@ export const metadata: Metadata = {
 
 function UserLayout({ children }: Props) {
   return (
-    <div>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <QueryProvider>
         <ResponsiveAppBar />
-        {children}
+        <Box sx={{ pt: 10 }}>{children}</Box>
         <Toast />
       </QueryProvider>
-    </div>
+    </Box>
   );
 }
 

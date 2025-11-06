@@ -6,13 +6,13 @@ import TaskForm from "../../../components/task-form.components";
 function UpdateTaskScreen() {
   const { rules, onSubmit, control, isPending } = useUpdateTaskHook();
   return (
-    <MainCard title="Update Task">
+    <MainCard title="✏️ Cập Nhật Công Việc">
       <TaskForm
         control={control}
         rules={rules}
         onSubmit={onSubmit}
         isPending={isPending}
-        submitLabel="Update Task"
+        submitLabel="💾 Cập Nhật"
         isEdit={true}
       />
     </MainCard>

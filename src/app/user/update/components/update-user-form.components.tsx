@@ -19,7 +19,7 @@ function UpdateUserForm() {
           <FormInput
             name="firstName"
             control={control}
-            label="First Name"
+            label="Tên"
             fullWidth
           />
         </Grid>
@@ -27,7 +27,7 @@ function UpdateUserForm() {
           <FormInput
             name="lastName"
             control={control}
-            label="Last Name"
+            label="Họ"
             fullWidth
             rule={rules.lastName}
             required
@@ -37,7 +37,7 @@ function UpdateUserForm() {
           <FormInput
             name="password"
             control={control}
-            label="New Password (at least 6 characters)"
+            label="Mật khẩu mới (tối thiểu 6 ký tự)"
             type="password"
             fullWidth
             rule={rules.password}
@@ -45,20 +45,20 @@ function UpdateUserForm() {
         </Grid>
         <Grid size={6}>
           <Typography variant="body2" color="text.secondary">
-            Created At:
+            Ngày tạo:
             <b>
               {user && user.createdAt
-                ? new Date(user.createdAt).toLocaleString()
+                ? ` ${new Date(user.createdAt).toLocaleString()}`
                 : ""}
             </b>
           </Typography>
         </Grid>
         <Grid size={6}>
           <Typography variant="body2" color="text.secondary">
-            Last Updated:
+            Cập nhật lần cuối:
             <b>
               {user && user.updatedAt
-                ? new Date(user.updatedAt).toLocaleString()
+                ? ` ${new Date(user.updatedAt).toLocaleString()}`
                 : ""}
             </b>
           </Typography>
@@ -71,8 +71,30 @@ function UpdateUserForm() {
             fullWidth
             loading={isPending}
             disabled={!formState.isValid || !formState.isDirty}
+            sx={{
+              mt: 2,
+              py: 1.5,
+              fontWeight: 700,
+              borderRadius: 3,
+              textTransform: "none",
+              fontSize: "1rem",
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              boxShadow: "0 8px 20px rgba(102, 126, 234, 0.3)",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
+                boxShadow: "0 12px 30px rgba(102, 126, 234, 0.4)",
+                transform: "translateY(-2px)",
+              },
+              "&:active": {
+                transform: "translateY(0)",
+              },
+              "&:disabled": {
+                background: "#ccc",
+              },
+            }}
           >
-            Update
+            💾 Cập Nhật
           </LoadingButton>
         </Grid>
       </Grid>

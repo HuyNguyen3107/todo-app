@@ -11,9 +11,10 @@ interface MainCardProps {
 }
 
 const StyledBox = styled(Box)({
-  paddingTop: "48px",
+  paddingTop: "24px",
   paddingLeft: "16px",
   paddingRight: "16px",
+  paddingBottom: "24px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -22,29 +23,42 @@ const StyledBox = styled(Box)({
 
 const StyledPaper = styled(Paper)({
   width: "100%",
+  maxWidth: "1200px",
   padding: "40px",
-  borderRadius: "48px",
-  backgroundColor: "#fff",
-  boxShadow: "0 8px 32px 0 #6366f120",
+  borderRadius: "24px",
+  background: "rgba(255, 255, 255, 0.95)",
+  backdropFilter: "blur(10px)",
+  boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
+  border: "1px solid rgba(255, 255, 255, 0.3)",
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  "&:hover": {
+    transform: "translateY(-5px)",
+    boxShadow: "0 25px 70px rgba(0, 0, 0, 0.35)",
+  },
 });
 
 const StyledTypography = styled(Typography)({
-  textShadow: "0 2px 8px #bdbdbd33",
+  background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+  textShadow: "none",
 });
 
 const MainCard: React.FC<MainCardProps> = ({ children, title }) => (
   <StyledBox>
-    <StyledPaper elevation={8}>
-      <StyledTypography
-        variant="h4"
-        fontWeight={800}
-        mb={3}
-        align="center"
-        color="primary"
-        letterSpacing={1.5}
-      >
-        {title}
-      </StyledTypography>
+    <StyledPaper elevation={0}>
+      {title && (
+        <StyledTypography
+          variant="h4"
+          fontWeight={800}
+          mb={3}
+          align="center"
+          letterSpacing={1}
+        >
+          {title}
+        </StyledTypography>
+      )}
       {children}
     </StyledPaper>
   </StyledBox>

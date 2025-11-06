@@ -7,13 +7,13 @@ function CreateTaskScreen() {
   const { control, rules, onSubmit, isPending } = useCreateTaskHook();
 
   return (
-    <MainCard title="Create New Task">
+    <MainCard title="📝 Tạo Công Việc Mới">
       <TaskForm
         control={control}
         rules={rules}
         onSubmit={onSubmit}
         isPending={isPending}
-        submitLabel="Create Task"
+        submitLabel="✨ Tạo Mới"
         isEdit={false}
       />
     </MainCard>

@@ -1,15 +1,12 @@
 "use client";
 import React from "react";
 import { useRegisterHook } from "../hooks/use-register.hooks";
-import { Typography } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Box } from "@mui/material";
 import FormInput from "@/components/form-input.components";
-import Link from "next/link";
-import { ROUTE_PATHS } from "@/constants/route-path.constants";
 import { useRouter } from "next/navigation";
 
-type Props = {};
+type Props = Record<string, never>;
 
 function RegisterForm({}: Props) {
   const router = useRouter();
@@ -64,23 +61,29 @@ function RegisterForm({}: Props) {
         color="primary"
         fullWidth
         size="large"
-        sx={{ mt: 1, fontWeight: 600 }}
+        sx={{
+          mt: 2,
+          fontWeight: 700,
+          borderRadius: 3,
+          textTransform: "none",
+          fontSize: "1rem",
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          boxShadow: "0 8px 20px rgba(102, 126, 234, 0.3)",
+          transition: "all 0.3s ease",
+          "&:hover": {
+            background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
+            boxShadow: "0 12px 30px rgba(102, 126, 234, 0.4)",
+            transform: "translateY(-2px)",
+          },
+          "&:active": {
+            transform: "translateY(0)",
+          },
+        }}
         disabled={!formState.isValid}
         loading={isPending}
       >
         Đăng ký
       </LoadingButton>
-      <Box mt={2} textAlign="center">
-        <Typography variant="body2">
-          Đã có tài khoản?{" "}
-          <Link
-            href={ROUTE_PATHS.LOGIN}
-            style={{ textDecoration: "none", color: "#1976d2" }}
-          >
-            Đăng nhập
-          </Link>
-        </Typography>
-      </Box>
     </Box>
   );
 }

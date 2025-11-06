@@ -23,10 +23,31 @@ import { useRouter } from "next/navigation";
 
 const StyledButton = styled(Button)({
   fontWeight: 700,
-  borderRadius: 8,
+  borderRadius: 12,
   textTransform: "none",
-  boxShadow: "0 2px 8px #6366f120",
-  marginBottom: 16,
+  fontSize: "1rem",
+  padding: "12px 32px",
+  background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+  boxShadow: "0 8px 20px rgba(102, 126, 234, 0.3)",
+  marginBottom: 24,
+  transition: "all 0.3s ease",
+  "&:hover": {
+    background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
+    boxShadow: "0 12px 30px rgba(102, 126, 234, 0.4)",
+    transform: "translateY(-2px)",
+  },
+  "&:active": {
+    transform: "translateY(0)",
+  },
+});
+
+const StyledTableHead = styled(TableHead)({
+  background: "linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)",
+  "& th": {
+    fontWeight: 700,
+    fontSize: "0.95rem",
+    color: "#667eea",
+  },
 });
 
 export default function TaskListScreen() {
@@ -64,28 +85,35 @@ export default function TaskListScreen() {
   }
 
   return (
-    <MainCard title="Task List">
+    <MainCard title="📋 Danh Sách Công Việc">
       <StyledButton
         variant="contained"
         color="primary"
         onClick={() => router.push(ROUTE_PATHS.TASK_CREATE)}
       >
-        Add
+        ➕ Thêm Công Việc
       </StyledButton>
       <TableContainer
         component={Paper}
-        sx={{ maxHeight: 300, mb: 2, maxWidth: "100%", overflowX: "auto" }}
+        sx={{
+          maxHeight: 400,
+          mb: 2,
+          maxWidth: "100%",
+          overflowX: "auto",
+          borderRadius: 3,
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+        }}
       >
         <Table stickyHeader>
-          <TableHead>
+          <StyledTableHead>
             <TableRow>
-              <TableCell>Task Name</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Due Date</TableCell>
-              <TableCell>Created At</TableCell>
-              <TableCell align="center"></TableCell>
+              <TableCell>Tên Công Việc</TableCell>
+              <TableCell>Trạng Thái</TableCell>
+              <TableCell>Hạn Hoàn Thành</TableCell>
+              <TableCell>Ngày Tạo</TableCell>
+              <TableCell align="center">Thao Tác</TableCell>
             </TableRow>
-          </TableHead>
+          </StyledTableHead>
           <TableBody>
             {tasks && tasks.length > 0 ? (
               tasks.map((task) => (
@@ -110,8 +138,8 @@ export default function TaskListScreen() {
             ) : (
               <TableRow>
                 <TableCell colSpan={5} align="center">
-                  <Typography color="text.secondary">
-                    No tasks found.
+                  <Typography color="text.secondary" py={3}>
+                    Chưa có công việc nào. Hãy tạo công việc đầu tiên! 🚀
                   </Typography>
                 </TableCell>
               </TableRow>
